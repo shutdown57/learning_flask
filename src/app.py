@@ -11,12 +11,12 @@ app.secret_key = app.config['SECRET_KEY']
 app.register_blueprint(bp_users, url_prefix='/users')
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
 
-@app.route('/about')
+@app.route('/about', methods=['GET'])
 def about():
     return render_template('about.html')
 
