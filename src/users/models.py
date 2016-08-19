@@ -1,4 +1,4 @@
-from src.app import db
+from src.ext import db
 from werkzeug.security import check_password_hash, generate_password_hash
 
 

@@ -9,11 +9,11 @@ app = Flask(__name__)
 app.config.from_object('config')
 app.secret_key = app.config['SECRET_KEY']
 
-app.register_blueprint(bp_users, url_prefix='/users')
+app.register_blueprint(bp_users)
 
 db.init_app(app)
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 
 @app.route('/', methods=['GET'])
