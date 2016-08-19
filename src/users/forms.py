@@ -21,3 +21,8 @@ class LoginForm(Form):
     password = PasswordField(label='Password',
                              validators=[validators.DataRequired("Please enter a password.")])
     submit = SubmitField(label='Sign in')
+
+
+class AddressForm(Form):
+    address = StringField('Address', validators=[validators.DataRequired("Please enter an address.")])
+    submit = SubmitField("Search")
