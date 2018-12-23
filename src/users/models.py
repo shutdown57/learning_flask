@@ -1,9 +1,10 @@
-import urllib2
+import urllib
 import geocoder
 import json
 
 from src.ext import db
 from werkzeug.security import check_password_hash, generate_password_hash
+
 
 
 class User(db.Model):
@@ -37,7 +38,7 @@ class Place(object):
         return int(meters / 80)
 
     def wiki_path(self, slug):
-        return urllib2.urlparse.urljoin("http://en.wikipedia.org/wiki/", slug.replace(' ', '_'))
+        return urllib.parse.urljoin("http://en.wikipedia.org/wiki/", slug.replace(' ', '_'))
 
     def address_to_latlng(self, address):
         g = geocoder.google(address)
@@ -48,7 +49,7 @@ class Place(object):
 
         query_url = 'https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=5000&gscoord={0}%7C{1}&gslimit=20&format=json'.format(
             lat, lng)
-        g = urllib2.urlopen(query_url)
+        g = urllib.request.urlopen(query_url)
         results = g.read()
         g.close()
 
